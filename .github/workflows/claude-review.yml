@@ -10,6 +10,7 @@ jobs:
       contents: read
       pull-requests: write
       issues: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,7 +19,7 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          direct_prompt: |
+          prompt: |
             Review this pull request for bugs, quality issues, and security risks.
             Read every changed file, not just the diff context. If you find a
             real bug, describe exactly what input triggers it and why. Post
